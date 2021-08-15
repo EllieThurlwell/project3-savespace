@@ -1,5 +1,7 @@
 # Save Space battleships style game
 
+from random import randint
+
 # Title welcoming player to game
 print(
     "✮ Welcome ✮\nYour mission, should you choose to accept it, is to\n"
@@ -19,41 +21,56 @@ print(
 
 # user chooses difficulty
 
-board = []
+# board = []
 
-# board size 5
-for i in range(0, 5):
-    board.append(['.'] * 5)
+# # board size 5
+# for i in range(0, 5):
+#     board.append(['.'] * 5)
 
 
-def print_board(board_width, board_height):
+def print_board(board_size):
     """
     prints the board for the user to play against
     """
-    # top_bot = ' ✮ ' * (board_width + 2)
-    # print(top_bot)
-    # for row in range(board_height):
-    #     print(' ✮ ' + ' . ' * board_width + ' ✮ ')
-    # print(top_bot)
+    board = []
+
+    for _ in range(board_size):
+        board.append(['.'] * board_size)
+
     for row in board:
         print(" ".join(row))
 
 
-print_board(5, 5)
+def rand_row(board_size):
+    return randint(0, board_size)
 
 
-class Board:
-    """
-    Defines a class for board in order to
-    access size of board and number of targets
-    according to difficulty.
-    With methods to add target position and
-    player guess when needed.
-    """
+def rand_col(board_size):
+    return randint(0, board_size)
 
-    def __init__(self, size, num_targets):
-        self.size = size
-        self.num_targets = num_targets
-        self.board  # for i in range size ?
-        self.targets = []
-        self.guesses = []
+
+target_row = rand_row(5)
+target_col = rand_col(5)
+
+guess_row = int(input('Guess a row: '))
+guess_col = int(input('Guess a column: '))
+
+# class Board:
+#     """
+#     Defines a class for board in order to
+#     access size of board and number of targets
+#     according to difficulty.
+#     With methods to add target position and
+#     player guess when needed.
+#     """
+
+#     def __init__(self, size, num_targets):
+#         self.size = size
+#         self.num_targets = num_targets
+#         self.board = ["✩" for x in range(size) for y in range(size)]
+#         self.targets = []
+#         self.guesses = []
+
+#     def render_board(self):
+#         for row in self.board:
+#             print(" ".join(row))
