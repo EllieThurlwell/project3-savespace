@@ -32,6 +32,7 @@ def print_board(board_size):
     """
     prints the board for the user to play against
     """
+    global board
     board = []
 
     for _ in range(board_size):
@@ -41,19 +42,47 @@ def print_board(board_size):
         print(" ".join(row))
 
 
+print_board(5)
+
+
 def rand_row(board_size):
-    return randint(0, board_size)
+    rows = []
+    target_row = 0
+    for _ in range(3):
+        target_row = randint(0, board_size)
+        rows.append(target_row)
+    return rows
 
 
 def rand_col(board_size):
-    return randint(0, board_size)
+    cols = []
+    target_col = 0
+    for _ in range(3):
+        target_col = randint(0, board_size)
+        cols.append(target_col)
+    return cols
 
 
-target_row = rand_row(5)
-target_col = rand_col(5)
+rand_row(5)
+rand_col(5)
 
-guess_row = int(input('Guess a row: '))
-guess_col = int(input('Guess a column: '))
+
+def get_user_guess():
+    guess_col = input('Guess a column between 1 and 5: ')
+    while guess_col not in '12345':
+        print('Invalid input. Choose a number between 1 and 5: ')
+        guess_col = input('Guess a column between 1 and 5: ')
+
+    guess_row = input('Guess a row between 1 and 5: ')
+    while guess_row not in '12345':
+        print('Invalid input. Choose a number between 1 and 5: ')
+        guess_row = input('Guess a row between 1 and 5: ')
+
+    return int(guess_col) - 1, int(guess_row) - 1
+
+
+get_user_guess()
+# if guess_row and guess_col
 
 # class Board:
 #     """
