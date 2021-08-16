@@ -16,7 +16,7 @@ print(
     +
     "\n\nThere are 4 enemy spacecraft somewhere around us.\n"
     +
-    "Shoot them with your lazer to eliminate the threat.\n"
+    "Shoot them with your lazer to eliminate the threat. You have 8 chances.\n"
 )
 
 # user chooses difficulty
@@ -102,6 +102,16 @@ def get_user_guesses():
 
 # get_user_guesses()
 
+def get_eight_guesses():
+    chance = 1
+    while chance < 8:
+        print(f'Chance {chance}')
+        guess_column()
+        guess_row()
+        chance += 1
+        if chance == 8:
+            print('Out of chances!')
+
 
 user_guesses = []
 
@@ -138,6 +148,8 @@ guess_y = guess_row()
 for x, y in zip(guess_x, guess_y):
     user_guesses.append((x, y))
 
+
+get_eight_guesses()
 print(user_guesses)
 
 # class Board:
