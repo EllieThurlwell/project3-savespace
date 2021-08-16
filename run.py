@@ -14,7 +14,7 @@ print(
 ██████╔╝██║░░██║░░╚██╔╝░░███████╗  ██████╔╝██║░░░░░██║░░██║╚█████╔╝███████╗
 ╚═════╝░╚═╝░░╚═╝░░░╚═╝░░░╚══════╝  ╚═════╝░╚═╝░░░░░╚═╝░░╚═╝░╚════╝░╚══════╝"""
     +
-    "\n\nThere are enemy 4 spacecraft all around us.\n"
+    "\n\nThere are 4 enemy spacecraft somewhere around us.\n"
     +
     "Shoot them with your lazer to eliminate the threat.\n"
 )
@@ -76,7 +76,8 @@ def rand_col(board_size):
 target_rows = rand_row(5)
 target_columns = rand_col(5)
 for x, y in zip(target_columns, target_rows):
-    targets_list.append((x, y))
+    if (x, y) not in targets_list:
+        targets_list.append((x, y))
 
 print(targets_list)
 
@@ -99,8 +100,45 @@ def get_user_guesses():
     return int(user_x) - 1, int(user_y) - 1
 
 
-get_user_guesses()
+# get_user_guesses()
 
+
+user_guesses = []
+
+
+def guess_row():
+    """
+    Takes user input for y coordinate value and
+    appends it to a list of y values, taking into
+    account zero-based indexing
+    """
+    guess_rows = []
+    user_ystr = input('Guess a y coordinate between 1 and 5: ')
+    user_y = int(user_ystr) - 1
+    guess_rows.append(user_y)
+    return guess_rows
+
+
+def guess_column():
+    """
+    Takes user input for x coordinate value and
+    appends it to a list of x values, taking into
+    account zero-based indexing
+    """
+    guess_columns = []
+    user_xstr = input('Guess an x coordinate between 1 and 5: ')
+    user_x = int(user_xstr) - 1
+    guess_columns.append(user_x)
+    return guess_columns
+
+
+# Appends user x and y guesses into a list of coordinate tuples
+guess_x = guess_column()
+guess_y = guess_row()
+for x, y in zip(guess_x, guess_y):
+    user_guesses.append((x, y))
+
+print(user_guesses)
 
 # class Board:
 #
