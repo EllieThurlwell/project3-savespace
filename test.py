@@ -49,11 +49,6 @@ def rand_col(board_size):
     return cols
 
 
-"""
-Loops through the random generated x and y
-values and appends them as a tuple to a list
-of target coordinates
-"""
 target_rows = rand_row(5)
 target_columns = rand_col(5)
 for x, y in zip(target_columns, target_rows):
@@ -107,50 +102,38 @@ def get_user_guesses():
     user_guesses = []
 
     for x, y in zip(guess_columns, guess_rows):
-        user_guesses.append((x, y))
         global this_guess
         this_guess = (x, y)
+        user_guesses.append((x, y))
 
     return user_guesses
 
 
 get_user_guesses()
 
-"""
-Set the number of shots the user will take and set
-the number of hits to 0 at the beginning of the game
-"""
 max_shots = 8
 shot = 0
 hits = 0
 
-"""
-Loop through the game until the user has hit all targets
-or used all shots. Call function to request x and y guesses
-and edit the board depending on hit or miss. Print the
-updated board
-"""
-while hits < 5 or shot <= max_shots:
-    shot += 1
 
-    print(f'Shot number {shot}')
+# while hits < 5 or shot <= max_shots:
+#     shot += 1
 
-    get_user_guesses()
+#     print(f'Shot number {shot}')
 
-    if this_guess in user_guesses:
-        print('You already shot there! Try again')
-        get_user_guesses()
+#     get_user_guesses()
 
-    if this_guess in targets_list:
-        board[user_y][user_x] = 'X'
-        hits += 1
-        print('Well done! You hit an enemy spacecraft')
-    else:
-        board[user_y][user_x] = '-'
-        print('You missed this time')
+#     if this_guess in user_guesses:
+#         print('You already shot there! Try again')
+#         get_user_guesses()
 
-    for row in board:
-        print("  ".join(row))
+#     if this_guess in targets_list:
+#         board[user_y][user_x] = 'X'
+#         hits += 1
+#         print('Well done! You hit an enemy spacecraft')
+#     else:
+#         board[user_y][user_x] = '-'
+#         print('You missed this time')
 
-
-print(f'Game over! You hit {hits} enemy spacecraft!')
+#     for row in board:
+#         print("  ".join(row))
