@@ -23,44 +23,21 @@ print(
 targets_list = []
 
 
-def rand_row(board_size):
+def generate_targets_list(rows, cols, num_of_targets):
     """
-    creates a list of randomly selected row numbers
-    for the positions of the targets
+    Randomly generate a list of target coordinates
     """
-    rows = []
-    target_row = 0
-    for _ in range(4):
-        target_row = randint(0, board_size - 1)
-        rows.append(target_row)
-    return rows
-
-
-def rand_col(board_size):
-    """
-    creates a list of randomly selected column
-    numbers for the positions of the targets
-    """
-    cols = []
-    target_col = 0
-    for _ in range(4):
-        target_col = randint(0, board_size - 1)
-        cols.append(target_col)
-    return cols
-
-
-"""
-Loops through the random generated x and y
-values and appends them as a tuple to a list
-of target coordinates
-"""
-target_rows = rand_row(5)
-target_columns = rand_col(5)
-for x, y in zip(target_columns, target_rows):
-    if (x, y) not in targets_list:
-        targets_list.append((x, y))
-
-print(targets_list)
+    targets_list = []
+    added_targets = 0
+    while added_targets < num_of_targets:
+        target_col_idx = randint(0, cols-1)
+        target_row_idx = randint(0, rows-1)
+        position = [target_col_idx, target_row_idx]
+        if position not in targets_list:
+            added_targets = added_targets + 1
+            targets_list.append(position)
+    print(targets_list)
+    return targets_list
 
 
 def initialise_board(rows, cols):
