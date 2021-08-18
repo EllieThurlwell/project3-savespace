@@ -1,81 +1,58 @@
 <h1 align="center">Save Space</h1>
 
-[View the live project here.](https://codeinstitute.net)
+[View the live project here.](https://save-space.herokuapp.com/)
 
-This is the main marketing website for Code Institute. It is designed to be responsibe and accessible on a range of devices, making it easy to navigate for potential students and partners.
+An interactive command line game in the style of Battleships, in which players guess coordinates in order to shoot enemy spacecraft.
 
-<h2 align="center"><img src="https://i.ibb.co/TYvTXz1/Example-CI.png"></h2>
+<h2 align="center"><img src="assets/readme-images/save-space.png"></h2>
 
-## User Experience (UX)
-
--   ### User stories
-
-    -   #### First Time Visitor Goals
-
-        1. As a First Time Visitor, I want to easily understand the main purpose of the site and learn more about the organisation.
-        2. As a First Time Visitor, I want to be able to easily navigate throughout the site to find content.
-        3. As a First Time Visitor, I want to look for testimonials to understand what their users think of them and see if they are trusted. I also want to locate their social media links to see their followings on social media to determine how trusted and known they are.
-
-    -   #### Returning Visitor Goals
-
-        1. As a Returning Visitor, I want to find information about coding challenges.
-        2. As a Returning Visitor, I want to find the best way to get in contact with the organisation with any questions I may have.
-        3. As a Returning Visitor, I want to find community links.
-
-    -   #### Frequent User Goals
-        1. As a Frequent User, I want to check to see if there are any newly added challenges or hackathons.
-        2. As a Frequent User, I want to check to see if there are any new blog posts.
-        3. As a Frequent User, I want to sign up to the Newsletter so that I am emailed any major updates and/or changes to the website or organisation.
-
--   ### Design
-    -   #### Colour Scheme
-        -   The two main colours used are Code Insititue red, and white.
-    -   #### Typography
-        -   The Montserrat font is the main font used throughout the whole website with Sans Serif as the fallback font in case for any reason the font isn't being imported into the site correctly. Montserrat is a clean font used frequently in programming, so it is both attractive and appropriate.
-    -   #### Imagery
-        -   Imagery is important. The large, background hero image is designed to be striking and catch the user's attention. It also has a modern, energetic aesthetic.
-
-*   ### Wireframes
-
-    -   Home Page Wireframe - [View](https://github.com/)
-
-    -   Mobile Wireframe - [View](https://github.com/)
-
-    -   Contact Us Page Wireframe - [View](https://github.com/)
+Each target occupies one spot on the grid. A successful guess results in a hit and an unsuccessful guess results in a miss. The game ends when the player has either hit all targets or used all their guesses, and they are told how many targets they hit. At the end of the game the player is given the choice to play again.
 
 ## Features
 
--   Responsive on all device sizes
+-   ### Existing
 
--   Interactive elements
+    -   target coordinates are randomly generated and cannot be duplicates
+
+    -   user input is accepted, stored, and compared to target data
+
+    -   the user is given feedback after each input
+
+    -   validity of input is checked - the same guess cannot be made twice and the guess must be within the range of the board size
+
+    -   game board is updated after each guess to display either a hit or miss at the guessed coordinate
+
+    -   the number of hits is stored and displayed to the user at the end of the game
+
+-   ### Future 
+    -   user could choose difficulty level at the start of the game, as per the initial flow diagram
+        -   the size of the board, number of targets, and number of guesses are stored as variables - this gives them the possibility of being set via user input
+
+    -   add functionality for a range of target sizes
+    
+
+## Logic flow diagram
+
 
 ## Technologies Used
 
-### Languages Used
+### Language
 
--   [HTML5](https://en.wikipedia.org/wiki/HTML5)
--   [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
+-   [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
 
-### Frameworks, Libraries & Programs Used
 
-1. [Bootstrap 4.4.1:](https://getbootstrap.com/docs/4.4/getting-started/introduction/)
-    - Bootstrap was used to assist with the responsiveness and styling of the website.
-1. [Hover.css:](https://ianlunn.github.io/Hover/)
-    - Hover.css was used on the Social Media icons in the footer to add the float transition while being hovered over.
-1. [Google Fonts:](https://fonts.google.com/)
-    - Google fonts were used to import the 'Titillium Web' font into the style.css file which is used on all pages throughout the project.
-1. [Font Awesome:](https://fontawesome.com/)
-    - Font Awesome was used on all pages throughout the website to add icons for aesthetic and UX purposes.
-1. [jQuery:](https://jquery.com/)
-    - jQuery came with Bootstrap to make the navbar responsive but was also used for the smooth scroll function in JavaScript.
-1. [Git](https://git-scm.com/)
+### Other
+
+- [Git](https://git-scm.com/)
     - Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
-1. [GitHub:](https://github.com/)
-    - GitHub is used to store the projects code after being pushed from Git.
-1. [Photoshop:](https://www.adobe.com/ie/products/photoshop.html)
-    - Photoshop was used to create the logo, resizing images and editing photos for the website.
-1. [Balsamiq:](https://balsamiq.com/)
-    - Balsamiq was used to create the [wireframes](https://github.com/) during the design process.
+- [GitHub](https://github.com/)
+    - GitHub is used to store the project code after being pushed from Git.
+- [Gitpod](https://www.gitpod.io/)
+    - Gitpod used as the coding workspace.
+- [Heroku](https://www.heroku.com/)
+    - Heroku was used for the deployment of the project.
+- [Lucidchart](https://www.lucidchart.com/)
+    - Lucidchart was used to create flow diagrams to illustrate the logic of the program.
 
 ## Testing
 

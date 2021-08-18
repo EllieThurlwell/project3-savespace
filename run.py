@@ -61,8 +61,8 @@ def ask_to_play_again():
     """
     At end of the game ask user if they want to play again
     """
-    choice = input("Do you want to play again? Type Y/N: ")
-    if choice == 'Y':
+    choice = input("Do you want to play again? Type y/n: \n")
+    if choice == 'y':
         init_game()
     else:
         print("Thanks for playing Save Space!")
@@ -110,18 +110,18 @@ def start_game(rows, cols, num_of_targets, total_num_of_guesses):
 
 
 def take_col_input_guess():
-    user_xstr = input('Guess an x coordinate between 1 and 5: ')
+    user_xstr = input('Guess an x coordinate between 1 and 5: \n')
     if user_xstr not in '12345':
-        print('Invalid input. Choose a number between 1 and 5: ')
+        print('Invalid input. Choose a number between 1 and 5: \n')
         return take_col_input_guess()
     else:
         return int(user_xstr) - 1
 
 
 def take_row_input_guess():
-    user_ystr = input('Guess an y coordinate between 1 and 5: ')
+    user_ystr = input('Guess an y coordinate between 1 and 5: \n')
     if user_ystr not in '12345':
-        print('Invalid input. Choose a number between 1 and 5: ')
+        print('Invalid input. Choose a number between 1 and 5: \n')
         return take_row_input_guess()
     else:
         return int(user_ystr) - 1
