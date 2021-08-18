@@ -18,6 +18,8 @@ Each target occupies one spot on the grid. A successful guess results in a hit a
 
     -   the user is given feedback after each input
 
+    <h2 align="center"><img src="assets/readme-images/feedback.png"></h2>
+
     -   validity of input is checked - the same guess cannot be made twice and the guess must be within the range of the board size
 
     -   game board is updated after each guess to display either a hit or miss at the guessed coordinate
