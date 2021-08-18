@@ -3,7 +3,7 @@
 from random import randint
 
 # Title welcoming player to game
-print(
+intro = print(
     "✮ Welcome ✮\nYour mission, should you choose to accept it, is to\n"
     +
     """
@@ -33,7 +33,6 @@ def generate_targets_list(rows, cols, num_of_targets):
         if position not in targets_list:
             added_targets = added_targets + 1
             targets_list.append(position)
-    print(targets_list)
     return targets_list
 
 
@@ -85,7 +84,7 @@ def start_game(rows, cols, num_of_targets, total_num_of_guesses):
         print(f'Shot number {shots + 1}')
 
         user_guess = get_user_guesses()
-        print(user_guess, user_guesses)
+
         if user_guess in user_guesses:
             print('You already shot there! Try again')
         elif user_guess in targets_list:
@@ -103,9 +102,9 @@ def start_game(rows, cols, num_of_targets, total_num_of_guesses):
         print_board()
 
     if hits == num_of_targets:
-        print("Congratulations! You Saved Space!")
+        print('Well done! You Saved Space!\n')
     else:
-        print(f'Game over! You hit {hits} enemy spacecraft')
+        print(f'Game over! You hit {hits} enemy spacecraft\n')
 
     ask_to_play_again()
 
@@ -141,7 +140,7 @@ def get_user_guesses():
 
 def init_game():
     # Title welcoming player to game
-    print("Intro")
+    print(intro)
     num_of_targets = 4
     num_of_guesses = 8
     rows = 5
