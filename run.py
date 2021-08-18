@@ -80,13 +80,15 @@ def print_board(board_size):
 print_board(5)
 
 
-"""
-Set the number of shots the user will take and set
-the number of hits to 0 at the beginning of the game
-"""
-max_shots = 8
-shot = 0
-hits = 0
+def ask_to_play_again():
+    """
+    At end of the game ask user if they want to play again
+    """
+    choice = input("Do you want to play again? Type Y/N")
+    if choice == 'Y':
+        init_game()
+    else:
+        print("Thanks for playing Save Space!")
 
 
 def start_game(rows, cols, num_of_targets, total_num_of_guesses):
