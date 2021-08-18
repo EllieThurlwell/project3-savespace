@@ -31,7 +31,7 @@ def rand_row(board_size):
     rows = []
     target_row = 0
     for _ in range(4):
-        target_row = randint(0, board_size)
+        target_row = randint(0, board_size - 1)
         rows.append(target_row)
     return rows
 
@@ -44,7 +44,7 @@ def rand_col(board_size):
     cols = []
     target_col = 0
     for _ in range(4):
-        target_col = randint(0, board_size)
+        target_col = randint(0, board_size - 1)
         cols.append(target_col)
     return cols
 
@@ -114,8 +114,6 @@ def get_user_guesses():
     return user_guesses
 
 
-get_user_guesses()
-
 """
 Set the number of shots the user will take and set
 the number of hits to 0 at the beginning of the game
@@ -124,33 +122,46 @@ max_shots = 8
 shot = 0
 hits = 0
 
-"""
-Loop through the game until the user has hit all targets
-or used all shots. Call function to request x and y guesses
-and edit the board depending on hit or miss. Print the
-updated board
-"""
-while hits < 5 or shot <= max_shots:
-    shot += 1
 
-    print(f'Shot number {shot}')
+def start_game(rows, cols, num_of_targets, total_num_of_guesses):
+    """
+    Function to run the gameplay until either all targets are
+    hit or all guesses have been made
+    """
+    targets_list = generate_targets_list(rows, cols, num_of_targets)
 
-    get_user_guesses()
+    user_guesses = []
 
-    if this_guess in user_guesses:
-        print('You already shot there! Try again')
-        get_user_guesses()
+    shots = 0
+    hits = 0
 
-    if this_guess in targets_list:
-        board[user_y][user_x] = 'X'
-        hits += 1
-        print('Well done! You hit an enemy spacecraft')
+    while hits < num_of_targets and shots < total_num_of_guesses:
+        print(f'Shot number {shots + 1}')
+
+        user_guess = get_user_guesses()
+        print(user_guess, user_guesses)
+        if user_guess in user_guesses:
+            print('You already shot there! Try again')
+        elif user_guess in targets_list:
+            user_guesses.append(user_guess)
+            shots += 1
+            board[user_guess[0]][user_guess[1]] = 'X'
+            hits += 1
+            print('Well done! You hit an enemy spacecraft')
+        else:
+            user_guesses.append(user_guess)
+            shots += 1
+            board[user_guess[0]][user_guess[1]] = '-'
+            print('You missed this time')
+
+        print_board()
+
+    if hits == num_of_targets:
+        print("Congratulations! You Saved Space!")
     else:
-        board[user_y][user_x] = '-'
-        print('You missed this time')
+        print(f'Game over! You hit {hits} enemy spacecraft')
 
-    for row in board:
-        print("  ".join(row))
+    ask_to_play_again()
 
 
 print(f'Game over! You hit {hits} enemy spacecraft!')
