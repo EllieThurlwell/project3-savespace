@@ -63,21 +63,25 @@ for x, y in zip(target_columns, target_rows):
 print(targets_list)
 
 
-def print_board(board_size):
+def initialise_board(rows, cols):
     """
-    prints the board for the user to play against
+    Initialises the game board
     """
     global board
     board = []
 
-    for _ in range(board_size):
-        board.append(['.'] * board_size)
+    for _ in range(cols):
+        board.append(['.'] * rows)
+
+
+def print_board():
+    """
+    Prints the game board for the user to play against
+    """
+    global board
 
     for row in board:
         print("  ".join(row))
-
-
-print_board(5)
 
 
 def ask_to_play_again():
