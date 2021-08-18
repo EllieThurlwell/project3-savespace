@@ -86,18 +86,18 @@ def start_game(rows, cols, num_of_targets, total_num_of_guesses):
         user_guess = get_user_guesses()
 
         if user_guess in user_guesses:
-            print('You already shot there! Try again')
+            print('\nYou already shot there! Try again')
         elif user_guess in targets_list:
             user_guesses.append(user_guess)
             shots += 1
             board[user_guess[0]][user_guess[1]] = 'X'
             hits += 1
-            print('Well done! You hit an enemy spacecraft')
+            print('\nWell done! You hit an enemy spacecraft')
         else:
             user_guesses.append(user_guess)
             shots += 1
             board[user_guess[0]][user_guess[1]] = '-'
-            print('You missed this time')
+            print('\nYou missed this time')
 
         print_board()
 
@@ -112,7 +112,7 @@ def start_game(rows, cols, num_of_targets, total_num_of_guesses):
 def take_col_input_guess():
     user_xstr = input('Guess an x coordinate between 1 and 5: \n')
     if user_xstr not in '12345':
-        print('Invalid input. Choose a number between 1 and 5: \n')
+        print('Invalid input. You need to choose a number between 1 and 5')
         return take_col_input_guess()
     else:
         return int(user_xstr) - 1
@@ -121,7 +121,7 @@ def take_col_input_guess():
 def take_row_input_guess():
     user_ystr = input('Guess an y coordinate between 1 and 5: \n')
     if user_ystr not in '12345':
-        print('Invalid input. Choose a number between 1 and 5: \n')
+        print('Invalid input. You need to choose a number between 1 and 5')
         return take_row_input_guess()
     else:
         return int(user_ystr) - 1
