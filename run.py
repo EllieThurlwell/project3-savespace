@@ -20,9 +20,6 @@ print(
 )
 
 
-targets_list = []
-
-
 def generate_targets_list(rows, cols, num_of_targets):
     """
     Randomly generate a list of target coordinates
@@ -139,4 +136,21 @@ def get_user_guesses():
     col = take_col_input_guess()
     row = take_row_input_guess()
 
-    return [col, row]
+    return [row, col]
+
+
+def init_game():
+    # Title welcoming player to game
+    print("Intro")
+    num_of_targets = 4
+    num_of_guesses = 8
+    rows = 5
+    cols = 5
+
+    # Implement level select
+    initialise_board(rows, cols)
+    print_board()
+    start_game(rows, cols, num_of_targets, num_of_guesses)
+
+
+init_game()
