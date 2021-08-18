@@ -80,40 +80,6 @@ def print_board(board_size):
 print_board(5)
 
 
-def get_user_guesses():
-    """
-    request user to input a row and column value
-    check if input is valid and add to list of guesses
-    """
-    user_xstr = input('\nGuess an x coordinate between 1 and 5: ')
-    while user_xstr not in '12345':
-        print('Invalid input. Choose a number between 1 and 5: ')
-        user_xstr = input('\nGuess a column between 1 and 5: ')
-    guess_columns = []
-    global user_x
-    user_x = int(user_xstr) - 1
-    guess_columns.append(user_x)
-
-    user_ystr = input('\nGuess a y coordinate between 1 and 5: ')
-    while user_ystr not in '12345':
-        print('Invalid input. Choose a number between 1 and 5: ')
-        user_ystr = input('\nGuess a row between 1 and 5: ')
-    guess_rows = []
-    global user_y
-    user_y = int(user_ystr) - 1
-    guess_rows.append(user_y)
-
-    global user_guesses
-    user_guesses = []
-
-    for x, y in zip(guess_columns, guess_rows):
-        user_guesses.append((x, y))
-        global this_guess
-        this_guess = (x, y)
-
-    return user_guesses
-
-
 """
 Set the number of shots the user will take and set
 the number of hits to 0 at the beginning of the game
@@ -164,4 +130,30 @@ def start_game(rows, cols, num_of_targets, total_num_of_guesses):
     ask_to_play_again()
 
 
-print(f'Game over! You hit {hits} enemy spacecraft!')
+def take_col_input_guess():
+    user_xstr = input('\nGuess an x coordinate between 1 and 5: ')
+    if user_xstr not in '12345':
+        print('Invalid input. Choose a number between 1 and 5: ')
+        return take_col_input_guess()
+    else:
+        return int(user_xstr) - 1
+
+
+def take_row_input_guess():
+    user_ystr = input('\nGuess an y coordinate between 1 and 5: ')
+    if user_ystr not in '12345':
+        print('Invalid input. Choose a number between 1 and 5: ')
+        return take_row_input_guess()
+    else:
+        return int(user_ystr) - 1
+
+
+def get_user_guesses():
+    """
+    request user to input a row and column value
+    check if input is valid and add to list of guesses
+    """
+    col = take_col_input_guess()
+    row = take_row_input_guess()
+
+    return [col, row]
